@@ -100,7 +100,7 @@
   name = "始めよう"
   weight = 10
   identifier = "get-started"
-  url = "/tutorials/interface/overview"
+  url = "/tutorials/interface/quickstart"
 
 [[main]]
   name = "ギャラリー"

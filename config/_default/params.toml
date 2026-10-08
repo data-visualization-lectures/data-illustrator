@@ -4,7 +4,7 @@
 title = "Data Illustrateur"
 titleSeparator = "-"
 titleAddition = "Data Illustrateur"
-description = "Create data visualizations without programming."
+description = "プログラミングなしで、表現力豊かなデータ視覚化を作成できます。"
 
 ## Open Graph + Twitter Cards
 # images = ["atlas.png"]
@@ -12,7 +12,7 @@ description = "Create data visualizations without programming."
 # twitterCreator = "henkverlinde"
 # facebookAuthor = "verlinde.henk"
 # facebookPublisher = "verlinde.henk"
-ogLocale = "en_US"
+ogLocale = "ja_JP"
 
 ## JSON-LD
 # schemaType = "Organization"

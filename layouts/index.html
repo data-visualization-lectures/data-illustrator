@@ -8,6 +8,11 @@
     <div class="col-lg-9 col-xl-8 text-center mt-3 mb-3">
       <p class="lead mt-n2">{{ .Params.lead | safeHTML }}</p>
       <a class="btn btn-primary btn-lg px-4 mb-0" href="app/" role="button">アプリを起動</a>
+      <div class="mt-4">
+        <video class="home-video" controls preload="metadata" poster="">
+          <source src="/videos/homepage.mp4" type="video/mp4">
+        </video>
+      </div>
       <p class="meta">version {{ $data := getJSON "/package.json" }}{{ $data.version }}</p>
       <p class="meta mt-n3">最適な体験を得るには、Google Chromeを使用してください</p>
     </div>
@@ -18,6 +23,26 @@
 {{ define "sidebar-prefooter" }}
 <section class="section section-sm">
   <div class="container">
+    <div class="row justify-content-center text-center">
+      <h2 class="h3 mb-4">はじめての方へ</h2>
+    </div>
+    <div class="row justify-content-center text-center mb-5">
+      <div class="col-lg-4 mb-3">
+        <p class="fs-5 fw-bold mb-1">1. 完成例を開いて触ってみる</p>
+        <p>できあがった棒グラフをアプリで開き、図形やデータを自由に触ってみてください。</p>
+        <a class="btn btn-outline-primary" href="/app?project=BarChartVert" role="button">完成例を開く</a>
+      </div>
+      <div class="col-lg-4 mb-3">
+        <p class="fs-5 fw-bold mb-1">2. クイックスタートで1枚作ってみる</p>
+        <p>データを読み込み、図形を描き、棒グラフを1枚作るところまでを順に進めます。</p>
+        <a class="btn btn-outline-primary" href="/tutorials/interface/quickstart/" role="button">クイックスタートを見る</a>
+      </div>
+      <div class="col-lg-4 mb-3">
+        <p class="fs-5 fw-bold mb-1">3. ギャラリーで作り方を見る</p>
+        <p>いろいろなグラフの作り方を動画で見て、完成例やデータ付きのアプリで試せます。</p>
+        <a class="btn btn-outline-primary" href="/gallery/" role="button">ギャラリーを見る</a>
+      </div>
+    </div>
     <div class="row justify-content-center text-center">
       <p class="fs-4">Data Illustrateurは、FigmaやAdobe Illustratorのようなベクターデザインツールでイラストを描くのと同じくらい簡単に、視覚化作成を行うことを目指しています。
       </p>
