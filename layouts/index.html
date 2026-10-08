@@ -18,6 +18,11 @@
       <p class="lead mt-n2">{{ .Params.lead | safeHTML }}</p>
       <a data-i18n-ja class="btn btn-primary btn-lg px-4 mb-0" href="app/" role="button">アプリを起動</a>
       <a data-i18n-en class="btn btn-primary btn-lg px-4 mb-0" href="app/" role="button">Launch App</a>
+      <div class="mt-4">
+        <video class="home-video" controls preload="metadata" poster="">
+          <source src="/videos/homepage.mp4" type="video/mp4">
+        </video>
+      </div>
       <p class="meta">version {{ $data := getJSON "/package.json" }}{{ $data.version }}</p>
       <p data-i18n-ja class="meta mt-n3">最適な体験を得るには、Google Chromeを使用してください</p>
       <p data-i18n-en class="meta mt-n3">For the best experience, use Google Chrome</p>
@@ -29,6 +34,36 @@
 {{ define "sidebar-prefooter" }}
 <section class="section section-sm">
   <div class="container">
+    <div class="row justify-content-center text-center">
+      <h2 data-i18n-ja class="h3 mb-4">はじめての方へ</h2>
+      <h2 data-i18n-en class="h3 mb-4">New here?</h2>
+    </div>
+    <div class="row justify-content-center text-center mb-5">
+      <div class="col-lg-4 mb-3">
+        <p data-i18n-ja class="fs-5 fw-bold mb-1">1. 完成例を開いて触ってみる</p>
+        <p data-i18n-en class="fs-5 fw-bold mb-1">1. Open a finished example</p>
+        <p data-i18n-ja>できあがった棒グラフをアプリで開き、図形やデータを自由に触ってみてください。</p>
+        <p data-i18n-en>Open a finished bar chart and explore the shapes and data.</p>
+        <a data-i18n-ja class="btn btn-outline-primary" href="/app?project=BarChartVert" role="button">完成例を開く</a>
+        <a data-i18n-en class="btn btn-outline-primary" href="/app?project=BarChartVert" role="button">Open Example</a>
+      </div>
+      <div class="col-lg-4 mb-3">
+        <p data-i18n-ja class="fs-5 fw-bold mb-1">2. クイックスタートで1枚作ってみる</p>
+        <p data-i18n-en class="fs-5 fw-bold mb-1">2. Make one chart with the quick start</p>
+        <p data-i18n-ja>データを読み込み、図形を描き、棒グラフを1枚作るところまでを順に進めます。</p>
+        <p data-i18n-en>Load data, draw a shape, and build a bar chart step by step.</p>
+        <a data-i18n-ja class="btn btn-outline-primary" href="/tutorials/interface/quickstart/" role="button">クイックスタートを見る</a>
+        <a data-i18n-en class="btn btn-outline-primary" href="/tutorials/interface/quickstart/" role="button">Open Quick Start</a>
+      </div>
+      <div class="col-lg-4 mb-3">
+        <p data-i18n-ja class="fs-5 fw-bold mb-1">3. ギャラリーで作り方を見る</p>
+        <p data-i18n-en class="fs-5 fw-bold mb-1">3. Watch how examples are made</p>
+        <p data-i18n-ja>いろいろなグラフの作り方を動画で見て、完成例やデータ付きのアプリで試せます。</p>
+        <p data-i18n-en>Watch videos, then open a finished chart or start from its data.</p>
+        <a data-i18n-ja class="btn btn-outline-primary" href="/gallery/" role="button">ギャラリーを見る</a>
+        <a data-i18n-en class="btn btn-outline-primary" href="/gallery/" role="button">Browse Gallery</a>
+      </div>
+    </div>
     <div class="row justify-content-center text-center">
       <p data-i18n-ja class="fs-4">Data Illustratorは、FigmaやAdobe Illustratorのようなベクターデザインツールでイラストを描くのと同じくらい簡単に、視覚化作成を行うことを目指しています。</p>
       <p data-i18n-en class="fs-4">Data Illustrator aims to make creating visualizations as easy as drawing illustrations in a vector design tool like Figma or Adobe Illustrator.</p>

@@ -4,7 +4,8 @@
     <article>
       <div class="blog-header">
         <h1>{{ .Title }}</h1>
-        <a target="_blank" class="btn btn-primary btn-sm px-4 mb-0 fs-5" href="/app?dataset={{ .Params.dataset }}" role="button">Follow this demo with preloaded dataset in Data Illustrateur</a>
+        <a target="_blank" class="btn btn-primary btn-sm px-4 mb-0 fs-5" href="/app?dataset={{ .Params.dataset }}" role="button">データ入りのアプリで作ってみる</a>
+        {{ with .Params.msc }}<a target="_blank" class="btn btn-outline-primary btn-sm px-4 mb-0 fs-5 ms-2" href="/app?project={{ . }}" role="button">完成例を開く</a>{{ end }}
         <!-- {{ partial "main/blog-meta.html" . }} -->
       </div>
       <p class="lead">{{ .Params.lead | safeHTML }}</p>

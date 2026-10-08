@@ -61,6 +61,22 @@
         } else {
             console.warn('[CloudUI] #exportBtn not found');
         }
+
+        const csvBtn = document.getElementById('csvBtn');
+        if (csvBtn && !csvBtn.dataset.dvzProjectContextBound) {
+            csvBtn.dataset.dvzProjectContextBound = '1';
+            csvBtn.addEventListener('change', (event) => {
+                if (event.isTrusted === false) return;
+                const file = event.target && event.target.files ? event.target.files[0] : null;
+                if (!file) return;
+                setHeaderProjectContext({
+                    sourceType: 'import',
+                    sourceName: file.name,
+                    sourceNameEn: file.name,
+                    canOverwrite: false
+                });
+            }, true);
+        }
     }
 
     function showToast(msg, type = 'info', duration = 3000) {
@@ -75,6 +91,13 @@
 
     function showProcessingToast(message, duration = 5000) {
         showToast(message, 'info', duration);
+    }
+
+    function setHeaderProjectContext(context) {
+        const toolHeader = document.querySelector('dataviz-tool-header');
+        if (toolHeader && typeof toolHeader.setProjectContext === 'function') {
+            toolHeader.setProjectContext(context);
+        }
     }
 
     function delay(ms) {
@@ -214,6 +237,12 @@
         }
 
         showProcessingToast(t('processing_sample'));
+        setHeaderProjectContext({
+            sourceType: 'sample',
+            sourceName: detail.name || getSampleFileName(detail),
+            sourceNameEn: detail.nameEn || getSampleFileName(detail),
+            canOverwrite: false
+        });
         try {
             const text = await fetchText(detail.url);
             if (injectCsvData(text, getSampleFileName(detail))) {
@@ -229,6 +258,13 @@
 
     async function loadCsvFromUrl(dataUrl) {
         showProcessingToast(t('processing_sample'));
+        const sourceName = dataUrl.split('/').pop() || 'data.csv';
+        setHeaderProjectContext({
+            sourceType: 'external-url',
+            sourceName,
+            sourceNameEn: sourceName,
+            canOverwrite: false
+        });
         try {
             const text = await fetchText(dataUrl);
             if (!injectCsvData(text, dataUrl.split('/').pop() || 'data.csv')) {
@@ -311,10 +347,10 @@
                 },
                 {
                     label: t('help'),
-                    type: 'link',
                     align: 'right',
-                    href: '/tutorials/interface/overview/',
-                    target: '_blank'
+                    action: function () {
+                        if (window.DIGuide) window.DIGuide.toggle();
+                    }
                 }
             ]
         });
@@ -322,6 +358,8 @@
         // Configure project management using new API
         toolHeader.setProjectConfig({
             appName: 'data-illustrator',
+            toolName: 'Data Illustrator',
+            toolNameEn: 'Data Illustrator',
             onProjectLoad: (projectData) => {
                 // Called when user loads a project from the modal
                 if (injectProjectData(projectData)) {

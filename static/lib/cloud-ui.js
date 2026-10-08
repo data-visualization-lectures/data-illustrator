@@ -347,10 +347,10 @@
                 },
                 {
                     label: t('help'),
-                    type: 'link',
                     align: 'right',
-                    href: '/tutorials/interface/overview/',
-                    target: '_blank'
+                    action: function () {
+                        if (window.DIGuide) window.DIGuide.toggle();
+                    }
                 }
             ]
         });
